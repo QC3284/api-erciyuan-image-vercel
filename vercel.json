@@ -1,1 +1,61 @@
-
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/image/:random.jpg",
+      "permanent": false,
+      "has": [
+        {
+          "type": "host",
+          "value": "api3-erciyuan-image.xcqcoo.top"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/image/:id(\\d+).jpg",
+      "destination": "https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/kasuie/:id.jpg"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/image/:path*",
+      "headers": [
+        {
+          "key": "Host",
+          "value": "cdn3.xcqcoo.top"
+        },
+        {
+          "key": "X-Forwarded-For",
+          "value": ":client_ip"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
+        },
+        {
+          "key": "CDN-Loop",
+          "value": "vercel"
+        },
+        {
+          "key": "Accept-Ranges",
+          "value": "bytes"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/image/.+\\.jpg$",
+      "dest": "/image/$1.jpg",
+      "headers": {
+        "X-Real-IP": ":client_ip",
+        "Connection": "keep-alive",
+        "Transfer-Encoding": "chunked"
+      },
+      "continue": true
+    }
+  ],
+  "regions": ["hkg1"]
+}
