@@ -1,39 +1,13 @@
 {
-  "redirects": [
+  "routes": [
     {
-      "source": "/",
-      "destination": "/$RANDOM",
-      "random": {
-        "min": 1,
-        "max": 102
-      },
-      "permanent": false,
-      "statusCode": 307
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/:id(\\d+)",
-      "destination": "https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/kasuie/:id.jpg"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/:id(\\d+)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, max-age=0"
-        },
-        {
-          "key": "CDN-Cache-Control",
-          "value": "no-store"
-        },
-        {
-          "key": "Vercel-CDN-Cache-Control",
-          "value": "no-store"
-        }
-      ]
+      "src": "/",
+      "dest": "/api/index.js",
+      "headers": {
+        "Cache-Control": "no-store, max-age=0",
+        "CDN-Cache-Control": "no-store",
+        "Vercel-CDN-Cache-Control": "no-store"
+      }
     }
   ],
   "regions": ["hkg1"]
