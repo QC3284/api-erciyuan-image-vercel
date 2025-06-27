@@ -1,19 +1,31 @@
 export default function handler(req) {
-  // 随机选择图片库：0为kasukie（1-102），1为moez（1-121）
-  const libraryIndex = Math.floor(Math.random() * 2);
+  // 随机选择图片库（0-3）
+  const libraryIndex = Math.floor(Math.random() * 4);
   
   // 根据选择的图片库生成对应范围的随机数
-  let randomNum;
-  if (libraryIndex === 0) {
-    randomNum = Math.floor(Math.random() * 102) + 1;
-  } else {
-    randomNum = Math.floor(Math.random() * 121) + 1;
+  let randomNum, imagePath;
+  
+  switch(libraryIndex) {
+    case 0: // kasuie 库 (1-102)
+      randomNum = Math.floor(Math.random() * 102) + 1;
+      imagePath = `kasuie/${randomNum}`;
+      break;
+    case 1: // moez 库 (1-121)
+      randomNum = Math.floor(Math.random() * 121) + 1;
+      imagePath = `moez/${randomNum}`;
+      break;
+    case 2: // kanzakimoe 库 (1-503)
+      randomNum = Math.floor(Math.random() * 503) + 1;
+      imagePath = `kanzakimoe/${randomNum}`;
+      break;
+    case 3: // mty 库 (1-400)
+      randomNum = Math.floor(Math.random() * 400) + 1;
+      imagePath = `mty/${randomNum}`;
+      break;
   }
   
   // 构建图片 URL
-  const imageUrl = libraryIndex === 0 
-    ? `https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/kasuie/${randomNum}.jpg`
-    : `https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/moez/${randomNum}.jpg`;
+  const imageUrl = `https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/${imagePath}.jpg`;
   
   // 创建响应头
   const headers = new Headers({
