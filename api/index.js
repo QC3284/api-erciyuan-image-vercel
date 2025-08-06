@@ -21,7 +21,7 @@ export default function handler(req) {
   const imagePath = `${library.name}/${Math.floor(Math.random() * library.count) + 1}`;
   
   // 构建图片URL
-  const imageUrl = `https://cdn3.xcqcoo.top/jsd/gh/QC3284/blog-image-go@main/${imagePath}.jpg`;
+  const imageUrl = `https://cdn4.xcqcoo.top/gh/QC3284/blog-image-go@main/${imagePath}.jpg`;
   
   // 返回307重定向响应
   return new Response(null, {
